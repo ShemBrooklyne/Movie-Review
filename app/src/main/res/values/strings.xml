@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movie Review</string>
-    <string name="splash_text">Let\'s Give it a Review</string>
+    <string name="splash_text">Let\'s Give it a Review!</string>
+    <string name="Discover_screen">Discover</string>
 </resources>
