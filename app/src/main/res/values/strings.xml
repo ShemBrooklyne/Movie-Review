@@ -2,4 +2,17 @@
     <string name="app_name">Movie Review</string>
     <string name="splash_text">Let\'s Give it a Review!</string>
     <string name="Discover_screen">Discover</string>
+    <string name="fade_trans">fadein-to-fadeout</string>
+    <string name="title_place">Supernatural</string>
+    <string name="FAILURE_MSG">Check your internet connection 🙂</string>
+    <string name="UNSUCCESSFUL_MSG">Your request was not successful 🙃</string>
+    <string name="DATE_FORMAT">2021</string>
 </resources>
+
+    <!--Intent Animations-->
+    <!--    *left-to-right-->
+    <!--    *right-to-left-->
+    <!--    *bottom-to-up-->
+    <!--    *up-to-bottom-->
+    <!--    *fadein-to-fadeout-->
+    <!--    *rotateout-to-rotatein-->

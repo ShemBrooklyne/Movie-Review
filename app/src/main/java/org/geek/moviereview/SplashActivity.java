@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
 
 //              Activity transition animation
-                CustomIntent.customType(SplashActivity.this, "fadein-to-fadeout");
+                CustomIntent.customType(SplashActivity.this, getString(R.string.fade_trans));
                 finish();
             }
         }, 2500);
