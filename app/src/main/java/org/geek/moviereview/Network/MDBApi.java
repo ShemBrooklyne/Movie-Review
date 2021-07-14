@@ -11,4 +11,14 @@ public interface MDBApi {
     Call<MDBres> getPopularMovies (
           @Query("api_key") String apiKey
     );
+
+    @GET("movie/top_rated")
+    Call<MDBres> getTopRatedMovies (
+            @Query("api_key") String apiKey
+    );
+
+    @GET("discover/tv")
+    Call<MDBres> DiscoverTvShows (
+            @Query("api_key") String apiKey
+    );
 }

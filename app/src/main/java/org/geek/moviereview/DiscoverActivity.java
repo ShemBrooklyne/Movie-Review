@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.geek.moviereview.Adapters.MDBAdapter;
 import org.geek.moviereview.Models.MDBres;
@@ -35,8 +36,6 @@ public class DiscoverActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
     @BindView(R.id.progressBar) ProgressBar progressBar;
     @BindView(R.id.errorTextView) TextView errorTextView;
-//    @BindView(R.id.poster) ImageView poster;
-//    @BindView(R.id.title) TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,36 +43,42 @@ public class DiscoverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_discover);
         ButterKnife.bind(this);
 
-        MDBApi client = MDBClient.getClient();
-        Call<MDBres> call = client.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+        try {
+            MDBApi client = MDBClient.getClient();
+            Call<MDBres> call = client.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
 
-        call.enqueue(new Callback<MDBres>() {
-            @Override
-            public void onResponse(@NotNull Call<MDBres> call, @NotNull Response<MDBres> response) {
-                if (response.isSuccessful()) {
-                    hideProgressBar();
-                    assert response.body() != null;
-                    results = response.body().getResults();
-                    mdbAdapter = new MDBAdapter(DiscoverActivity.this, results);
-                    recyclerView.setAdapter(mdbAdapter);
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DiscoverActivity.this);
-                    gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.VERTICAL, false);
-                    recyclerView.setLayoutManager(gridLayoutManager);
-                    recyclerView.smoothScrollToPosition(0);
-                    recyclerView.setHasFixedSize(true);
-                    showPosters();
+            call.enqueue(new Callback<MDBres>() {
+                @Override
+                public void onResponse(@NotNull Call<MDBres> call, @NotNull Response<MDBres> response) {
+                    if (response.isSuccessful()) {
+                        hideProgressBar();
+                        assert response.body() != null;
+                        results = response.body().getResults();
+                        mdbAdapter = new MDBAdapter(DiscoverActivity.this, results);
+                        recyclerView.setAdapter(mdbAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DiscoverActivity.this);
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(gridLayoutManager);
+                        recyclerView.smoothScrollToPosition(0);
+                        recyclerView.setHasFixedSize(true);
+                        showPosters();
 
-                } else {
-                    showUnsuccessfulMessage();
+                    } else {
+                        showUnsuccessfulMessage();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(@NotNull Call<MDBres> call, @NotNull Throwable t) {
-                hideProgressBar();
-                showFailureMessage();
-            }
-        });
+                @Override
+                public void onFailure(@NotNull Call<MDBres> call, @NotNull Throwable t) {
+                    hideProgressBar();
+                    showFailureMessage();
+                }
+            });
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            System.out.println(exception);
+        }
+
     }
 
     private void showPosters() {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -86,10 +87,12 @@ public class MDBAdapter extends RecyclerView.Adapter<MDBAdapter.ViewHolder> {
         public void onClick(View view) {
 //            Open more detail activity on click
             int itemPosition = getLayoutPosition();
+            Movie clickedMovie = mResults.get(itemPosition);
             Intent intent = new Intent(mContext, DetailActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("movie", Parcels.wrap(mResults));
+            intent.putExtra("movies", clickedMovie);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(intent);
+            Toast.makeText(view.getContext(), "More details about " + clickedMovie.getOriginalTitle(), Toast.LENGTH_SHORT).show();
         }
     }
 }

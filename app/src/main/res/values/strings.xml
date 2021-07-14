@@ -7,6 +7,8 @@
     <string name="FAILURE_MSG">Check your internet connection 🙂</string>
     <string name="UNSUCCESSFUL_MSG">Your request was not successful 🙃</string>
     <string name="DATE_FORMAT">2021</string>
+    <string name="More_details_ermsg">PLease try again</string>
+    <string name="movie_details">Movie Details</string>
 </resources>
 
     <!--Intent Animations-->
