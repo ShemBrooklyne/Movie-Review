@@ -4,6 +4,8 @@ package org.geek.moviereview;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.gs.myratingbarlibrary.MyRatingBar;
 
 import org.geek.moviereview.Models.Movie;
 
@@ -32,8 +35,9 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.release)
     TextView released;
     @BindView(R.id.avg_ratings)
-    TextView ratings;
+    MyRatingBar ratings;
 
+    MyRatingBar ratingBar;
     Movie movie;
     String thumbnail, movie_name, plot_overview, rating, date_released;
     int movie_id;
@@ -74,7 +78,7 @@ public class DetailActivity extends AppCompatActivity {
             title.setText(movie_name);
             overview.setText(plot_overview);
             released.setText(String.format(getString(R.string.Release_DT), date_released));
-            ratings.setText(String.format(getString(R.string.Rating), rating));
+            ratings.setRatingCount(Float.parseFloat(rating));
 
         } else {
             Toast.makeText(this, R.string.More_details_ermsg, Toast.LENGTH_SHORT).show();

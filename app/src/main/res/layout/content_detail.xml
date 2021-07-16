@@ -46,14 +46,25 @@
                     android:textColor="@color/white"
                     android:textSize="13sp" />
 
-                <TextView
+<!--                <TextView-->
+<!--                    android:id="@+id/avg_ratings"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/roboto_light"-->
+<!--                    android:padding="16dp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="13sp" />-->
+
+                <com.gs.myratingbarlibrary.MyRatingBar
                     android:id="@+id/avg_ratings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_light"
+                    app:space="0dp"
+                    app:maxCount="10"
                     android:padding="16dp"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    app:activeColor="@color/gold"
+                    app:myRatingbarStyle="medium" />
+
 
                 <TextView
                     android:id="@+id/release"
