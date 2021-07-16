@@ -13,7 +13,8 @@
         android:theme="@style/Theme.MovieReview">
         <activity
             android:name=".DetailActivity"
-            android:label="@string/movie_details"/>
+            android:label="@string/movie_details"
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/splash_theme">
