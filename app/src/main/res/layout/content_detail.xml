@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/midnight_blue"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/midnight_blue"
     android:fitsSystemWindows="true"
-    tools:showIn="@layout/activity_detail"
-    tools:context=".DetailActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".DetailActivity"
+    tools:showIn="@layout/activity_detail">
 
     <LinearLayout
-        android:id="@+id/add_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -33,7 +31,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:padding="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -53,7 +53,7 @@
                     android:fontFamily="@font/roboto_light"
                     android:padding="16dp"
                     android:textColor="@color/white"
-                    android:textSize="13sp"/>
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/release"
@@ -62,7 +62,7 @@
                     android:fontFamily="@font/roboto_light"
                     android:padding="16dp"
                     android:textColor="@color/white"
-                    android:textSize="13sp"/>
+                    android:textSize="13sp" />
 
 
             </LinearLayout>
@@ -70,7 +70,6 @@
         </ScrollView>
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

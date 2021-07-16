@@ -22,6 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import maes.tech.intentanim.CustomIntent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,9 +34,12 @@ public class DiscoverActivity extends AppCompatActivity {
     GridLayoutManager gridLayoutManager;
     public static final String LOG_TAG = MDBAdapter.class.getName();
 
-    @BindView(R.id.recyclerView) RecyclerView recyclerView;
-    @BindView(R.id.progressBar) ProgressBar progressBar;
-    @BindView(R.id.errorTextView) TextView errorTextView;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.errorTextView)
+    TextView errorTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="TITLE_PDR">10dp</dimen>
     <dimen name="TITLE_PDT">10dp</dimen>
     <dimen name="TITLE_TSZ">15sp</dimen>

@@ -45,8 +45,7 @@ public class MDBAdapter extends RecyclerView.Adapter<MDBAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NotNull MDBAdapter.ViewHolder holder, int position) {
         holder.bindMovies(mResults.get(position));
-//        holder.title.setText(mResults.get(position).getOriginalTitle());
-//        holder.year.setText(mResults.get(position).getReleaseDate());
+
         String poster = "https://image.tmdb.org/t/p/w500" + mResults.get(position).getPosterPath();
 
         Glide.with(mContext)
@@ -64,9 +63,12 @@ public class MDBAdapter extends RecyclerView.Adapter<MDBAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.poster) ImageView poster;
-        @BindView(R.id.title) TextView title;
-        @BindView(R.id.year) TextView year;
+        @BindView(R.id.poster)
+        ImageView poster;
+        @BindView(R.id.title)
+        TextView title;
+        @BindView(R.id.rating)
+        TextView movie_rated;
 
         private final Context mContext;
 
@@ -80,7 +82,7 @@ public class MDBAdapter extends RecyclerView.Adapter<MDBAdapter.ViewHolder> {
 
         public void bindMovies(Movie result) {
             title.setText(result.getOriginalTitle());
-            year.setText(result.getReleaseDate());
+            movie_rated.setText(result.getVoteAverage().toString());
         }
 
         @Override
