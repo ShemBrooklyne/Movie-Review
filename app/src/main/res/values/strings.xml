@@ -12,6 +12,7 @@
     <string name="Release_DT"><i> <b>Release Date: %s</b> </i></string>
     <string name="image_URL">https://image.tmdb.org/t/p/w500</string>
     <string name="Rating">"Rating: %s"</string>
+    <string name="movie_trailer">Movie Trailer</string>
 </resources>
 
     <!--Intent Animations-->
