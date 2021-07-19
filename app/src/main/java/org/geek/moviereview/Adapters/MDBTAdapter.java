@@ -1,20 +1,17 @@
 package org.geek.moviereview.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.VideoView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.transition.Hold;
-
 import org.geek.moviereview.Models.Trailer;
 import org.geek.moviereview.R;
 import org.jetbrains.annotations.NotNull;
@@ -46,9 +43,6 @@ public class MDBTAdapter extends RecyclerView.Adapter<MDBTAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         holder.bindTrailers(mTrailer.get(position));
-//        holder.title.setText(mTrailer.get(position).getName());
-//        holder.player.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=" + mTrailer.get(position).getKey()));
-
     }
 
 
@@ -75,14 +69,20 @@ public class MDBTAdapter extends RecyclerView.Adapter<MDBTAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                Trailer clickedTrailer = mTrailer.get(position);
+                String VideoId = mTrailer.get(position).getKey();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + VideoId));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("VIDEO_ID", VideoId);
+                mContext.startActivity(intent);
+                Toast.makeText(v.getContext(), "Watch " + clickedTrailer.getName() + " on YouTube.", Toast.LENGTH_SHORT).show();
+            }
         }
 
         public void bindTrailers(Trailer trailer) {
             title.setText(trailer.getName());
-//            player.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=" + trailer.getKey()));
-//            player.setMediaController(new MediaController(this));
-//            player.start();
         }
     }
 }

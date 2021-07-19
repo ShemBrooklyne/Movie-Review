@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:adjustViewBounds="true"
-    android:background="@color/dim_gray"
+    android:background="@color/midnight_blue"
     android:orientation="vertical"
     tools:context=".DiscoverActivity">
 
@@ -13,7 +14,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="3dp"
-        android:elevation="3dp">
+        android:elevation="3dp"
+        app:cardBackgroundColor="@color/transparent">
 
         <!--    Grid items for the recycler view-->
         <RelativeLayout
@@ -38,9 +40,20 @@
                 android:paddingLeft="@dimen/TITLE_PDL"
                 android:paddingTop="@dimen/TITLE_PDT"
                 android:paddingRight="@dimen/TITLE_PDR"
-                android:text="@string/title_place"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/TITLE_TSZ" />
+
+            <TextView
+                android:id="@+id/tv_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/poster"
+                android:fontFamily="@font/roboto_light"
+                android:paddingLeft="@dimen/TITLE_PDL"
+                android:paddingTop="@dimen/TITLE_PDT"
+                android:paddingRight="@dimen/TITLE_PDR"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/rating"
@@ -50,8 +63,7 @@
                 android:paddingLeft="@dimen/TITLE_PDL"
                 android:paddingRight="@dimen/TITLE_PDR"
                 android:paddingBottom="@dimen/TITLE_PDB"
-                android:text="@string/DATE_FORMAT"
-                android:textColor="@color/indianred"
+                android:textColor="@color/gold"
                 android:textSize="14sp" />
 
         </RelativeLayout>

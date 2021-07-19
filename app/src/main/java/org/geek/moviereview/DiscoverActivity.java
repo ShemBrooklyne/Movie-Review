@@ -5,7 +5,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,6 +51,12 @@ public class DiscoverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_discover);
         ButterKnife.bind(this);
 
+        loadPopular();
+        loadTrending();
+        loadSeries();
+    }
+
+    private void loadPopular() {
         try {
             MDBApi client = MDBClient.getClient();
             Call<MDBres> call = client.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
@@ -82,7 +92,82 @@ public class DiscoverActivity extends AppCompatActivity {
             exception.printStackTrace();
             System.out.println(exception);
         }
+    }
 
+    private void loadTrending() {
+        try {
+            MDBApi client = MDBClient.getClient();
+            Call<MDBres> call = client.getTopRatedMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+
+            call.enqueue(new Callback<MDBres>() {
+                @Override
+                public void onResponse(@NotNull Call<MDBres> call, @NotNull Response<MDBres> response) {
+                    if (response.isSuccessful()) {
+                        hideProgressBar();
+                        assert response.body() != null;
+                        results = response.body().getResults();
+                        mdbAdapter = new MDBAdapter(DiscoverActivity.this, results);
+                        recyclerView.setAdapter(mdbAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DiscoverActivity.this);
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(gridLayoutManager);
+                        recyclerView.smoothScrollToPosition(0);
+                        recyclerView.setHasFixedSize(true);
+                        showPosters();
+
+                    } else {
+                        showUnsuccessfulMessage();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<MDBres> call, @NotNull Throwable t) {
+                    hideProgressBar();
+                    showFailureMessage();
+                }
+            });
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            System.out.println(exception);
+        }
+    }
+
+    private void loadSeries() {
+        try {
+            MDBApi client = MDBClient.getClient();
+            Call<MDBres> call = client.DiscoverTvShows(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+
+            call.enqueue(new Callback<MDBres>() {
+                @Override
+                public void onResponse(@NotNull Call<MDBres> call, @NotNull Response<MDBres> response) {
+                    if (response.isSuccessful()) {
+                        hideProgressBar();
+                        assert response.body() != null;
+                        results = response.body().getResults();
+                        mdbAdapter = new MDBAdapter(DiscoverActivity.this, results);
+                        recyclerView.setAdapter(mdbAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DiscoverActivity.this);
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(gridLayoutManager);
+                        recyclerView.smoothScrollToPosition(0);
+                        recyclerView.setHasFixedSize(true);
+                        showPosters();
+
+                    } else {
+                        showUnsuccessfulMessage();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<MDBres> call, @NotNull Throwable t) {
+                    hideProgressBar();
+                    showFailureMessage();
+                }
+            });
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            System.out.println(exception);
+        }
     }
 
     private void showPosters() {
@@ -101,6 +186,33 @@ public class DiscoverActivity extends AppCompatActivity {
     private void showUnsuccessfulMessage() {
         errorTextView.setText(R.string.UNSUCCESSFUL_MSG);
         errorTextView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.popular) {
+            loadPopular();
+        } else {
+            if (id == R.id.trend) {
+                loadTrending();
+            } else {
+                if (id == R.id.tv) {
+                    loadSeries();
+                } else {
+                    if (id == R.id.exit) {
+                        finish();
+                    }
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

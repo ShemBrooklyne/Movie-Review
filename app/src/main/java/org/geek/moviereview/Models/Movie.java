@@ -21,12 +21,16 @@ public class Movie implements Parcelable {
     private String overview;
     @SerializedName("release_date")
     private String releaseDate;
+    @SerializedName("first_air_date")
+    private String airDate;
     @SerializedName("genre_ids")
     private List<Integer> genreIds = new ArrayList<Integer>();
     @SerializedName("id")
     private Integer id;
     @SerializedName("original_title")
     private String originalTitle;
+    @SerializedName("original_name")
+    private String originalName;
     @SerializedName("original_language")
     private String originalLanguage;
     @SerializedName("title")
@@ -42,16 +46,18 @@ public class Movie implements Parcelable {
     @SerializedName("vote_average")
     private Double voteAverage;
 
-    public Movie(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id,
-                 String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity,
+    public Movie(String posterPath, boolean adult, String overview, String releaseDate, String airDate, List<Integer> genreIds, Integer id,
+                 String originalTitle, String originalName, String originalLanguage, String title, String backdropPath, Double popularity,
                  Integer voteCount, Boolean video, Double voteAverage) {
         this.posterPath = posterPath;
         this.adult = adult;
         this.overview = overview;
         this.releaseDate = releaseDate;
+        this.airDate = airDate;
         this.genreIds = genreIds;
         this.id = id;
         this.originalTitle = originalTitle;
+        this.originalName = originalName;
         this.originalLanguage = originalLanguage;
         this.title = title;
         this.backdropPath = backdropPath;
@@ -105,6 +111,14 @@ public class Movie implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
+    public String getAirDate() {
+        return airDate;
+    }
+
+    public void setAirDate(String airDate) {
+        this.airDate = airDate;
+    }
+
     public List<Integer> getGenreIds() {
         return genreIds;
     }
@@ -127,6 +141,13 @@ public class Movie implements Parcelable {
 
     public void setOriginalTitle(String originalTitle) {
         this.originalTitle = originalTitle;
+    }
+
+    public String  getOriginalName() {
+        return originalName;
+    }
+    public void  setOriginalName(String originalName) {
+        this.originalName = originalName;
     }
 
     public String getOriginalLanguage() {
@@ -196,9 +217,11 @@ public class Movie implements Parcelable {
         dest.writeByte(this.adult ? (byte) 1 : (byte) 0);
         dest.writeString(this.overview);
         dest.writeString(this.releaseDate);
+        dest.writeString(this.airDate);
         dest.writeList(this.genreIds);
         dest.writeValue(this.id);
         dest.writeString(this.originalTitle);
+        dest.writeString(this.originalName);
         dest.writeString(this.originalLanguage);
         dest.writeString(this.title);
         dest.writeString(this.backdropPath);
@@ -213,10 +236,12 @@ public class Movie implements Parcelable {
         this.adult = in.readByte() != 0;
         this.overview = in.readString();
         this.releaseDate = in.readString();
+        this.airDate = in.readString();
         this.genreIds = new ArrayList<Integer>();
         in.readList(this.genreIds, Integer.class.getClassLoader());
         this.id = (Integer) in.readValue(Integer.class.getClassLoader());
         this.originalTitle = in.readString();
+        this.originalName = in.readString();
         this.originalLanguage = in.readString();
         this.title = in.readString();
         this.backdropPath = in.readString();

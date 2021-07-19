@@ -83,9 +83,13 @@ public class DetailActivity extends AppCompatActivity {
 //            Selected movie data
             thumbnail = movie.getPosterPath();
             movie_name = movie.getOriginalTitle();
+//            Tv-shows has different param
+//            movie_name = movie.getOriginalName();
             plot_overview = movie.getOverview();
             rating = String.valueOf((movie.getVoteAverage()));
             date_released = movie.getReleaseDate();
+            //            Tv-shows has different param
+//            date_released = movie.getAirDate();
             movie_id = movie.getId();
 
             String poster = getString(R.string.image_URL) + thumbnail;
@@ -99,7 +103,7 @@ public class DetailActivity extends AppCompatActivity {
             title.setText(movie_name);
             overview.setText(plot_overview);
             released.setText(String.format(getString(R.string.Release_DT), date_released));
-            ratings.setRatingCount(Float.parseFloat(rating)/2);
+            ratings.setRatingCount(Float.parseFloat(rating) / 2);
 
         } else {
             Toast.makeText(this, R.string.More_details_ermsg, Toast.LENGTH_SHORT).show();
@@ -194,6 +198,9 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
-
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }
