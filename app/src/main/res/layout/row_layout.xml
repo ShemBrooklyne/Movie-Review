@@ -49,9 +49,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/poster"
                 android:fontFamily="@font/roboto_light"
-                android:paddingLeft="@dimen/TITLE_PDL"
-                android:paddingTop="@dimen/TITLE_PDT"
-                android:paddingRight="@dimen/TITLE_PDR"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
                 android:textColor="@color/white"
                 android:textSize="13sp" />
 

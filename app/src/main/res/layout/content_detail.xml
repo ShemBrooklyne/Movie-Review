@@ -72,7 +72,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:padding="16dp"
-                    android:text="@string/movie_trailer"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
 

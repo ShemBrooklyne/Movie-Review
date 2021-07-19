@@ -59,4 +59,5 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.ghanshyam34:RatingBar:7cb4390547'
     implementation 'com.github.tcking:giraffeplayer2:0.1.25'
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 }
