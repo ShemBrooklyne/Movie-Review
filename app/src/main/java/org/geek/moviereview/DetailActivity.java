@@ -203,4 +203,5 @@ public class DetailActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+    
 }
