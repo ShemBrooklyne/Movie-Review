@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -59,4 +60,5 @@ dependencies {
     implementation 'com.github.ghanshyam34:RatingBar:7cb4390547'
     implementation 'com.github.tcking:giraffeplayer2:0.1.25'
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+
 }
