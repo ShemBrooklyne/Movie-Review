@@ -69,7 +69,7 @@ public class MDBTAdapter extends RecyclerView.Adapter<MDBTAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            int position = getAdapterPosition();
+            int position = getBindingAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
                 Trailer clickedTrailer = mTrailer.get(position);
                 String VideoId = mTrailer.get(position).getKey();

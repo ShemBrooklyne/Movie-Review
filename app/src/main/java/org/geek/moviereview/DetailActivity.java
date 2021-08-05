@@ -1,6 +1,7 @@
 package org.geek.moviereview;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -131,7 +132,7 @@ public class DetailActivity extends AppCompatActivity {
             Call<TrailerResponse> call = client.getMovieTrailer(movie_id, BuildConfig.THE_MOVIE_DB_API_TOKEN);
             call.enqueue(new Callback<TrailerResponse>() {
                 @Override
-                public void onResponse(Call<TrailerResponse> call, Response<TrailerResponse> response) {
+                public void onResponse(@NonNull Call<TrailerResponse> call, @NonNull Response<TrailerResponse> response) {
                     if (response.isSuccessful()) {
                         hideProgressBar();
                         assert response.body() != null;
@@ -145,7 +146,7 @@ public class DetailActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<TrailerResponse> call, Throwable t) {
+                public void onFailure(@NonNull Call<TrailerResponse> call, Throwable t) {
                     hideProgressBar();
                     showFailureMessage();
                 }

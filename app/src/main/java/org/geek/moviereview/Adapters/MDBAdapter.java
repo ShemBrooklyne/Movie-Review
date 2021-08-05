@@ -1,6 +1,7 @@
 package org.geek.moviereview.Adapters;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -82,13 +83,9 @@ public class MDBAdapter extends RecyclerView.Adapter<MDBAdapter.ViewHolder> {
         }
 
 
+        @SuppressLint("SetTextI18n")
         public void bindMovies(Movie result) {
-//            if (title == null) {
-//                assert false;
-//                title.setText(result.getOriginalName());
-//            } else {
-//                title.setText(result.getOriginalTitle());
-//            }
+
             tv_show.setText(result.getOriginalName());
             title.setText(result.getOriginalTitle());
             movie_rated.setText(result.getVoteAverage().toString());
@@ -104,7 +101,6 @@ public class MDBAdapter extends RecyclerView.Adapter<MDBAdapter.ViewHolder> {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(intent);
             Toast.makeText(view.getContext(), "More details about " + clickedMovie.getOriginalTitle(), Toast.LENGTH_SHORT).show();
-//            Toast.makeText(view.getContext(), "More details about " + clickedMovie.getOriginalName(), Toast.LENGTH_SHORT).show();
         }
     }
 }
