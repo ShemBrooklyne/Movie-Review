@@ -9,7 +9,7 @@
     <img src="./outSRC/watchlist.gif" align="left" height="600px" width="300px" alt="illustration">
 </div>
 <div class="">
-    <h2 align="center"> <b> What it took <b> </h2>
+    <h2 align="center"> <b> What it took </b> </h2>
     <p  align="center">
     Powered by 
     <span><a href="https://www.themoviedb.org">THEMOVIEDB</a></span> ⚡
@@ -34,7 +34,7 @@
 ---
 ## Setup Installation & Usage
 -- Clone the repository and open in Android Studio <br>
--- Replace/ with your new aquired Api key. In your
+-- Replace/ with your new acquired Api key. In your
 `gradle.properties` <br>
 -- Emulate on a virtual machine or use your own phone. <br>
 -- At this point `I believe you are good to go!` <br>
