@@ -52,8 +52,6 @@ public class DiscoverActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         loadPopular();
-        loadTrending();
-        loadSeries();
     }
 
     private void loadPopular() {
