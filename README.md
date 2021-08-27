@@ -2,7 +2,7 @@
 ---
 ## Hi there, 👋🏼.
 ---
-## Below is a simple **Watchlist** Android application🥲.
+## Below is a simple **Watchlist** Android application.
 ---
 ### Brief illustration about the app.
 <div class="">
