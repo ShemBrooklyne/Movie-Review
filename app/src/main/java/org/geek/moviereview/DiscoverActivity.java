@@ -1,19 +1,16 @@
 package org.geek.moviereview;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.geek.moviereview.Adapters.MDBAdapter;
 import org.geek.moviereview.Models.MDBres;
@@ -26,24 +23,22 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import maes.tech.intentanim.CustomIntent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DiscoverActivity extends AppCompatActivity {
 
-    private MDBAdapter mdbAdapter;
+    public static final String LOG_TAG = MDBAdapter.class.getName();
     public List<Movie> results;
     GridLayoutManager gridLayoutManager;
-    public static final String LOG_TAG = MDBAdapter.class.getName();
-
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     @BindView(R.id.errorTextView)
     TextView errorTextView;
+    private MDBAdapter mdbAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +83,6 @@ public class DiscoverActivity extends AppCompatActivity {
             });
         } catch (Exception exception) {
             exception.printStackTrace();
-            System.out.println(exception);
         }
     }
 
@@ -126,7 +120,6 @@ public class DiscoverActivity extends AppCompatActivity {
             });
         } catch (Exception exception) {
             exception.printStackTrace();
-            System.out.println(exception);
         }
     }
 
@@ -164,7 +157,6 @@ public class DiscoverActivity extends AppCompatActivity {
             });
         } catch (Exception exception) {
             exception.printStackTrace();
-            System.out.println(exception);
         }
     }
 

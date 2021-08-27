@@ -93,7 +93,7 @@ public class MDBAdapter extends RecyclerView.Adapter<MDBAdapter.ViewHolder> {
 
         @Override
         public void onClick(View view) {
-//            Open more detail activity on click
+            // Open more detail activity on click
             int itemPosition = getLayoutPosition();
             Movie clickedMovie = mResults.get(itemPosition);
             Intent intent = new Intent(mContext, DetailActivity.class);

@@ -59,12 +59,10 @@ public class DetailActivity extends AppCompatActivity {
     public List<Trailer> trailer;
     MDBTAdapter mdbtAdapter;
 
-    MyRatingBar ratingBar;
     Movie movie;
     String thumbnail, movie_name, plot_overview, rating, date_released;
     int movie_id;
 
-    //    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,13 +82,13 @@ public class DetailActivity extends AppCompatActivity {
 //            Selected movie data
             thumbnail = movie.getPosterPath();
             movie_name = movie.getOriginalTitle();
-//            Tv-shows has different param
-//            movie_name = movie.getOriginalName();
+            // Tv-shows has different param
+            /*movie_name = movie.getOriginalName();*/
             plot_overview = movie.getOverview();
             rating = String.valueOf((movie.getVoteAverage()));
             date_released = movie.getReleaseDate();
-            //            Tv-shows has different param
-//            date_released = movie.getAirDate();
+            // Tv-shows has different param
+            /*date_released = movie.getAirDate();*/
             movie_id = movie.getId();
 
             String poster = getString(R.string.image_URL) + thumbnail;
@@ -114,6 +112,7 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void setViews() {
         mdbtAdapter = new MDBTAdapter(DetailActivity.this, trailer);
 

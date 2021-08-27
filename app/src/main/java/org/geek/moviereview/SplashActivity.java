@@ -26,13 +26,13 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
-//        Action Bar hide function
+        // Action Bar hide function
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
 
-//        Delay request
+        // Delay request
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -40,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent = new Intent(SplashActivity.this, DiscoverActivity.class);
                 startActivity(intent);
 
-//              Activity transition animation
+              // Activity transition animation
                 CustomIntent.customType(SplashActivity.this, getString(R.string.fade_trans));
                 finish();
 

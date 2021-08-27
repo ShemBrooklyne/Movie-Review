@@ -23,7 +23,7 @@
 
 <div>
     <h2 align="center"> <b>First key requirement!</b></h2>
-    <p align=center>
+    <p>
      &nbsp; 1. Obtain an API Key🔑 <br>
      &nbsp; 2. Thorough read the given documentation 🤓 <br>
      &nbsp; 3. Familiarize with the endpoints and all params! <br>
